@@ -17,7 +17,7 @@ class LibraryScreen extends StatelessWidget {
         songRepository: context.read<SongRepository>(),
         playerState: context.read<PlayerState>(),
         appSettingsState: context.read<AppSettingsState>(),
-      ),
+      )..init(),
       child: const LibraryContent(),
     );
   }
