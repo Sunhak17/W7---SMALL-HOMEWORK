@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../data/repositories/songs/song_repository.dart';
+import '../../../data/repositories/songs/user_history_repository.dart';
 import '../../states/player_state.dart';
 import '../../states/settings_state.dart';
 import '../library/widgets/library_content.dart';
@@ -15,6 +16,7 @@ class LibraryScreen extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => LibraryViewModel(
         songRepository: context.read<SongRepository>(),
+        userHistoryRepository: context.read<UserHistoryRepository>(),
         playerState: context.read<PlayerState>(),
         appSettingsState: context.read<AppSettingsState>(),
       )..init(),

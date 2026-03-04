@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../../../data/repositories/songs/song_repository.dart';
+import '../../../../data/repositories/songs/user_history_repository.dart';
 import '../../../../model/songs/song.dart';
 import '../../../states/player_state.dart';
 import '../../../states/settings_state.dart';
 
 class LibraryViewModel extends ChangeNotifier {
   final SongRepository songRepository;
+  final UserHistoryRepository userHistoryRepository;
   final PlayerState playerState;
   final AppSettingsState appSettingsState;
 
@@ -13,6 +15,7 @@ class LibraryViewModel extends ChangeNotifier {
 
   LibraryViewModel({
     required this.songRepository,
+    required this.userHistoryRepository,
     required this.playerState,
     required this.appSettingsState,
   });
@@ -34,6 +37,7 @@ class LibraryViewModel extends ChangeNotifier {
 
   void play(Song song) {
     playerState.start(song);
+    userHistoryRepository.addSongToList(song.id);
   }
 
   void stop() {
